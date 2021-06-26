@@ -1,0 +1,55 @@
+<div class="logout">
+    <button mat-raised-button color="primary" type="submit" (click)="onLogout()">
+        Log Out
+    </button>
+</div>
+<h2 class="main-heading">Landlord Details</h2>
+<div class="agreement-form-container">
+    <ng-template [ngIf]="!landlordData" [ngIfElse]="gotLandlordData">
+        <app-agreement-form [customer]="landlord" (customerData)="gettingLandlordData($event)"></app-agreement-form>
+    </ng-template>
+
+    <ng-template #gotLandlordData>
+        <ul class="list-group">
+            <li class="list-group-item"><span class="fw-bold">Son/Daughter Of:</span> {{landlordData.guardian}}</li>
+            <li class="list-group-item"><span class="fw-bold">phoneNumber:</span> {{landlordData.phoneNumber}}</li>
+            <li class="list-group-item"><span class="fw-bold">floorNumber:</span> {{landlordData.address.floorNumber}}</li>
+            <li class="list-group-item"><span class="fw-bold">houseNumber:</span> {{landlordData.address.houseNumber}}</li>
+            <li class="list-group-item"><span class="fw-bold">district:</span> {{landlordData.address.district}}</li>
+            <li class="list-group-item"><span class="fw-bold">state:</span> {{landlordData.address.state}}</li>
+            <li class="list-group-item"><span class="fw-bold">pinCode:</span> {{landlordData.address.pinCode}}</li>
+            <li class="list-group-item"><img [src]="landlordData.addressProof" alt="Address Proof"></li>
+          </ul>
+    </ng-template>
+    
+</div>
+
+<h2 class="main-heading">Tenant Details</h2>
+<div class="agreement-form-container">
+    <ng-template [ngIf]="!tenantData" [ngIfElse]="gotTenantData">
+        <app-agreement-form [customer]="tenant" (customerData)="gettingTenantData($event)"></app-agreement-form>
+    </ng-template>
+
+    <ng-template #gotTenantData>
+        <ul class="list-group">
+            <li class="list-group-item"><span class="fw-bold">Son/Daughter Of:</span> {{tenantData.guardian}}</li>
+            <li class="list-group-item"><span class="fw-bold">phoneNumber:</span> {{tenantData.phoneNumber}}</li>
+            <li class="list-group-item"><span class="fw-bold">floorNumber:</span> {{tenantData.address.floorNumber}}</li>
+            <li class="list-group-item"><span class="fw-bold">houseNumber:</span> {{tenantData.address.houseNumber}}</li>
+            <li class="list-group-item"><span class="fw-bold">district:</span> {{tenantData.address.district}}</li>
+            <li class="list-group-item"><span class="fw-bold">state:</span> {{tenantData.address.state}}</li>
+            <li class="list-group-item"><span class="fw-bold">pinCode:</span> {{tenantData.address.pinCode}}</li>
+            <li class="list-group-item"><img [src]="tenantData.addressProof" alt="Address Proof"></li>
+          </ul>
+    </ng-template>
+    
+</div>
+
+<h2 class="main-heading">Property Details</h2>
+<div class="agreement-form-container">
+    <app-address></app-address>
+</div>
+<h2 class="main-heading">Contract Details</h2>
+<div class="agreement-form-container">
+    <app-contract-form></app-contract-form>
+</div>

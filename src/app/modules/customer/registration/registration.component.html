@@ -1,0 +1,40 @@
+<div class="form-container">
+    <form class="form" [formGroup]="registrationForm" (submit)="onRegistration()">
+
+        Landlord <mat-slide-toggle formControlName="customerType" [checked]="isTenant"></mat-slide-toggle> Tenant
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Name
+            </mat-label>
+            <input matInput formControlName="name" required>
+            <mat-error *ngIf="registrationForm.controls.name.touched && registrationForm.controls.name.invalid">
+                <span *ngIf="registrationForm.controls.name.errors.required">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> E-mail
+            </mat-label>
+            <input matInput formControlName="email" required #email>
+            <mat-error *ngIf="registrationForm.controls.email.touched && registrationForm.controls.email.invalid">
+                <span *ngIf="registrationForm.controls.email.errors.required">This field is mandatory.</span>
+                <span *ngIf="registrationForm.controls.email.errors.pattern">This field is invalid.</span>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Password
+            </mat-label>
+            <input matInput formControlName="password" type="password" required>
+            <mat-error *ngIf="registrationForm.controls.password.touched && registrationForm.controls.password.invalid">
+                <span *ngIf="registrationForm.controls.password.errors.required">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+
+        <div class="btn-section">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!this.registrationForm.valid">Sign Up</button>
+            <a [routerLink]="['/customer/login']">If already registered</a>
+        </div>
+
+    </form>
+</div>

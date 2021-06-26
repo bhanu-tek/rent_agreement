@@ -1,0 +1,29 @@
+<div class="form-container">
+    <form class="form" [formGroup]="loginForm" (submit)="onLogin()">
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> E-mail
+            </mat-label>
+            <input matInput formControlName="email" required>
+            <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+                <span *ngIf="loginForm.controls.email.errors.required">This field is mandatory.</span>
+                <span *ngIf="loginForm.controls.email.errors.pattern">This field is invalid.</span>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Password
+            </mat-label>
+            <input matInput formControlName="password" type="password" required>
+            <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+                <span *ngIf="loginForm.controls.password.errors.required">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+
+        <div class="btn-section">
+            <button mat-raised-button color="primary" type="submit">Log In</button>
+            <a [routerLink]="['/customer/registration']">If not registered</a>
+        </div>
+
+    </form>
+</div>

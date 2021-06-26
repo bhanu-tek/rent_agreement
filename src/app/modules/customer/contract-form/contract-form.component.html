@@ -1,0 +1,34 @@
+<div *ngIf="!contractDetails; else detailBlock">
+    <form [formGroup]="contractForm" (submit)="onContractDetails()">
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Monthly Rent </mat-label>
+            <input matInput formControlName="monthlyRent" required>
+            <mat-error *ngIf="contractForm.controls.monthlyRent.touched && contractForm.controls.monthlyRent.invalid">
+                <span *ngIf="contractForm.controls.monthlyRent.errors.required">This field is mandatory.</span>
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Security </mat-label>
+            <input matInput formControlName="security">
+        </mat-form-field>
+    
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Notice Period(In Days) </mat-label>
+            <input matInput formControlName="noticePeriod">
+        </mat-form-field>
+    
+        <button class="address-btn" mat-raised-button color="primary" type="submit" [disabled]="contractForm.invalid">
+            Add and Proceed to Payment
+        </button>
+    </form>
+</div>
+
+<ng-template #detailBlock>
+    <ul class="list-group">
+        <li class="list-group-item"><span class="fw-bold">monthlyRent:</span> {{contractDetails.monthlyRent?contractDetails.monthlyRent:'not given'}}</li>
+        <li class="list-group-item"><span class="fw-bold">noticePeriod:</span> {{contractDetails.noticePeriod?contractDetails.noticePeriod + ' Days':'not given'}}</li>
+        <li class="list-group-item"><span class="fw-bold">security:</span> {{contractDetails.security?contractDetails.security:'not given'}}</li>
+      </ul>
+</ng-template>

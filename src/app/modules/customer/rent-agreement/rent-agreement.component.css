@@ -1,0 +1,20 @@
+.agreement-form-container {
+    margin: auto 5rem;
+}
+
+.main-heading {
+    text-align: center;
+}
+
+.logout {
+    text-align: right;
+}
+
+mat-spinner {
+    margin-bottom: 1rem;
+}
+
+.rent-agreement-btn {
+    display: block;
+    width: 100%;
+}

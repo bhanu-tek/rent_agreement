@@ -1,0 +1,26 @@
+.form-container {
+    display: flex;
+    height: 30rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    background-color: #ece8e8;
+    padding: 5rem;
+    border-radius: 0.5rem;
+    flex-basis: 30rem;
+}
+
+.form-field {
+    display: block;
+}
+
+.btn-section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-section a {
+    margin-top: 0.4rem;
+}

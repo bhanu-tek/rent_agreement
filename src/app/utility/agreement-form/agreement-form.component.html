@@ -1,0 +1,69 @@
+<form [formGroup]="rentAgreementForm" class="form" (submit)="onAgreement()">
+
+
+    <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Son/Daughter Of </mat-label>
+        <input matInput formControlName="guardian" required>
+        <mat-error *ngIf="rentAgreementForm.controls.guardian.touched && rentAgreementForm.controls.guardian.invalid">
+            <span *ngIf="rentAgreementForm.controls.guardian.errors.required">This field is mandatory.</span>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Phone Number </mat-label>
+        <input matInput formControlName="phoneNumber" required>
+        <mat-error
+            *ngIf="rentAgreementForm.controls.phoneNumber.touched && rentAgreementForm.controls.phoneNumber.invalid">
+            <span *ngIf="rentAgreementForm.controls.phoneNumber.errors.required">This field is mandatory.</span>
+        </mat-error>
+    </mat-form-field>
+
+    <div formGroupName="address">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Floor No.</mat-label>
+            <mat-select formControlName="floorNumber">
+                <mat-option *ngFor="let floor of floors" [value]="floor">
+                    {{floor}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> House Number </mat-label>
+            <input matInput formControlName="houseNumber">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> District </mat-label>
+            <input matInput formControlName="district">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> State </mat-label>
+            <input matInput formControlName="state">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Pin Code </mat-label>
+            <input matInput formControlName="pinCode">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <ngx-mat-file-input (change)="onFileSelected()" formControlName="addressProof" required>
+        </ngx-mat-file-input>
+    </mat-form-field>
+
+    <ng-template [ngIf]="rentAgreementForm.controls.addressProof.touched">
+        <ng-template style="width: 10px;" [ngIf]="!imageUrl">
+            <mat-spinner></mat-spinner>
+        </ng-template>
+    </ng-template>
+
+    <button class="rent-agreement-btn" mat-raised-button color="primary" type="submit"
+        [disabled]="rentAgreementForm.invalid">
+        Add {{(customer === 'rent-agreement') ? 'Landlord': 'Tenant'}} Details
+    </button>
+
+</form>

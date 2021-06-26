@@ -1,0 +1,46 @@
+<div *ngIf="!propertyDetails; else propertyDetailBlock">
+  <form [formGroup]="addressForm" (submit)="onAddingAddress()">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Floor No.</mat-label>
+      <mat-select formControlName="floorNumber">
+        <mat-option *ngFor="let floor of floors" [value]="floor">
+          {{floor}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> House Number </mat-label>
+      <input matInput formControlName="houseNumber">
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> District </mat-label>
+      <input matInput formControlName="district">
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> State </mat-label>
+      <input matInput formControlName="state">
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Pin Code </mat-label>
+      <input matInput formControlName="pinCode">
+    </mat-form-field>
+
+    <button class="address-btn" mat-raised-button color="primary" type="submit" [disabled]="addressForm.invalid">Add
+      Property Details</button>
+  </form>
+</div>
+
+<ng-template #propertyDetailBlock>
+  <ul class="list-group">
+    <li class="list-group-item"><span class="fw-bold">floorNumber:</span> {{propertyDetails.floorNumber?propertyDetails.floorNumber:'not given'}}</li>
+    <li class="list-group-item"><span class="fw-bold">houseNumber:</span> {{propertyDetails.houseNumber?propertyDetails.houseNumber:'not given'}}</li>
+    <li class="list-group-item"><span class="fw-bold">district:</span> {{propertyDetails.district?propertyDetails.district:'not given'}}</li>
+    <li class="list-group-item"><span class="fw-bold">state:</span> {{propertyDetails.state?propertyDetails.state:'not given'}}</li>
+    <li class="list-group-item"><span class="fw-bold">pinCode:</span> {{propertyDetails.pinCode?propertyDetails.pinCode:'not given'}}</li>
+  </ul>
+</ng-template>
